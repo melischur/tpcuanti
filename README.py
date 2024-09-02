@@ -74,8 +74,3 @@ if archivo_subido is not None:
     st.pyplot(fig)
 else:
     st.write("Por favor, carga un archivo CSV para continuar.")
-
-else:
-        st.warning("Por favor, selecciona al menos una columna para visualizar.")
-else:
-    st.info("Por favor, carga un archivo CSV para comenzar el análisis.")
