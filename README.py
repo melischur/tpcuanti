@@ -14,41 +14,32 @@ def leer_datos(archivo):
     datos = pd.read_csv(archivo)
     return datos
 
-def procesar_datos(datos):
-    # Verificar si la columna 'fecha' existe en el DataFrame
-    if 'fecha' in datos.columns:
-        try:
-            # Intentar convertir la columna 'fecha' a formato datetime
-            datos['fecha'] = pd.to_datetime(datos['fecha'])
-        except Exception as e:
-            st.error(f"Error al convertir la columna 'fecha' a datetime: {e}")
-    else:
-        st.warning("La columna 'fecha' no se encuentra en los datos.")
-        # Opcional: Manejar la ausencia de la columna 'fecha'
-        # Por ejemplo, podrías crear una columna 'fecha' vacía o con valores predeterminados
-        # datos['fecha'] = pd.NaT  # NaT significa "Not a Time" en pandas
+# Convertir la columna 'FECHA' a formato datetime
+datos['FECHA'] = pd.to_datetime(datos['FECHA'], format='%d%b%Y:%H:%M:%S', errors='coerce')
 
-    # Resto de la lógica de procesamiento
-    return datos
+# Crear una nueva columna para el mes y año
+datos['MES'] = datos['FECHA'].dt.month
 
-def generar_grafico(porcentaje_llamados):
-    # Generar el gráfico de barras
-    fig, ax = plt.subplots()
-    porcentaje_llamados.plot(kind='bar', ax=ax)
-    ax.set_xlabel('Mes')
-    ax.set_ylabel('Porcentaje de Llamados')
-    ax.set_title('Porcentaje de Llamados por Casos COVID por Mes')
-    st.pyplot(fig)
+# Asegúrate de seleccionar solo las columnas numéricas para la suma
+columnas_numericas = datos.select_dtypes(include=['number']).columns
 
-def main():
-    st.title("Análisis de casos COVID 2021")
-    archivo = st.file_uploader("Cargar Archivo CSV", type="csv")
-    
-    if archivo is not None:
-        datos = leer_datos(archivo)
-        porcentaje_llamados = procesar_datos(datos)
-        generar_grafico(porcentaje_llamados)
+# Agrupar los datos por mes y sumar los valores de cada tipo de llamado
+llamados_por_mes = datos.groupby('MES')[columnas_numericas].sum()
 
-if __name__ == '__main__':
-    main()
+# Crear la gráfica
+llamados_por_mes.plot(kind='bar', figsize=(10, 6))
 
+# Reemplazar los números de los meses por los nombres de los meses
+nombres_meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+plt.xticks(ticks=range(12), labels=nombres_meses, rotation=45)
+
+# Configurar la gráfica
+plt.title('Total de Llamados por Tipo y Mes')
+plt.xlabel('Mes')
+plt.ylabel('Número de Llamados')
+plt.legend(title='Tipo de Llamado')
+plt.tight_layout()
+
+# Mostrar la gráfica
+plt.show()
