@@ -5,12 +5,6 @@
 # 3. Calcular el porcentaje de llamados por mes.
 # 4. Generar un gráfico de barras con los datos procesados.
 
-import subprocess
-import sys
-
-# Instalar matplotlib si no está instalado
-subprocess.check_call([sys.executable, "-m", "pip", "install", "matplotlib"])
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
