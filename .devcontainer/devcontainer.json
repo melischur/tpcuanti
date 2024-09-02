@@ -5,8 +5,8 @@
   "customizations": {
     "codespaces": {
       "openFiles": [
-        "README.md",
-        "README.md"
+        "README.py",
+        "README.py"
       ]
     },
     "vscode": {
@@ -30,4 +30,196 @@
   "forwardPorts": [
     8501
   ]
+}{
+  "meta": {
+    "project_mapping": [
+      {
+        "name": "EC5_AUTO",
+        "forms": {
+          "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b": {
+            "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54579108d1": {
+              "hide": false,
+              "group": [],
+              "branch": [],
+              "map_to": "1_hola_como_estas",
+              "possible_answers": []
+            },
+            "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54594108d2": {
+              "hide": false,
+              "group": [],
+              "branch": [],
+              "map_to": "2_que_opinas_de_urug",
+              "possible_answers": {
+                "66d54594108d3": {
+                  "map_to": "una mierda"
+                },
+                "66d5459f108d4": {
+                  "map_to": "muy bueno"
+                },
+                "66d545a6108d5": {
+                  "map_to": "I am a placeholder answer"
+                }
+              }
+            },
+            "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54630bd725": {
+              "hide": false,
+              "group": [],
+              "branch": [],
+              "map_to": "3_hola_como_estas__d",
+              "possible_answers": []
+            }
+          }
+        },
+        "map_index": 0,
+        "is_default": true
+      },
+      {
+        "name": "asdf",
+        "forms": {
+          "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b": {
+            "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54579108d1": {
+              "hide": false,
+              "group": [],
+              "branch": [],
+              "map_to": "1_hola_como_estas",
+              "possible_answers": []
+            },
+            "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54594108d2": {
+              "hide": false,
+              "group": [],
+              "branch": [],
+              "map_to": "2_que_opinas_de_urug",
+              "possible_answers": {
+                "66d54594108d3": {
+                  "map_to": "una mierda"
+                },
+                "66d5459f108d4": {
+                  "map_to": "muy bueno"
+                },
+                "66d545a6108d5": {
+                  "map_to": "I am a placeholder answer"
+                }
+              }
+            },
+            "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54630bd725": {
+              "hide": false,
+              "group": [],
+              "branch": [],
+              "map_to": "3_hola_como_estas__d",
+              "possible_answers": []
+            }
+          }
+        },
+        "map_index": 1,
+        "is_default": false
+      }
+    ],
+    "project_stats": {
+      "total_entries": 0,
+      "total_users": 0,
+      "form_counts": [],
+      "branch_counts": [],
+      "structure_last_updated": "2024-09-02 04:59:40"
+    }
+  },
+  "data": {
+    "id": "5b14b8fd31754b14b68b71f6380e9261",
+    "type": "project",
+    "project": {
+      "ref": "5b14b8fd31754b14b68b71f6380e9261",
+      "name": "asd4536456",
+      "slug": "asd4536456",
+      "forms": [
+        {
+          "ref": "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b",
+          "name": "sadfsd",
+          "slug": "sadfsd",
+          "type": "hierarchy",
+          "inputs": [
+            {
+              "max": null,
+              "min": null,
+              "ref": "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54579108d1",
+              "type": "text",
+              "group": [],
+              "jumps": [],
+              "regex": null,
+              "branch": [],
+              "verify": false,
+              "default": null,
+              "is_title": false,
+              "question": "hola como estas",
+              "uniqueness": "none",
+              "is_required": true,
+              "datetime_format": null,
+              "possible_answers": [],
+              "set_to_current_datetime": false
+            },
+            {
+              "max": null,
+              "min": null,
+              "ref": "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54594108d2",
+              "type": "checkbox",
+              "group": [],
+              "jumps": [],
+              "regex": null,
+              "branch": [],
+              "verify": false,
+              "default": "",
+              "is_title": false,
+              "question": "que opinas de uruguay",
+              "uniqueness": "none",
+              "is_required": true,
+              "datetime_format": null,
+              "possible_answers": [
+                {
+                  "answer": "una mierda",
+                  "answer_ref": "66d54594108d3"
+                },
+                {
+                  "answer": "muy bueno",
+                  "answer_ref": "66d5459f108d4"
+                },
+                {
+                  "answer": "I am a placeholder answer",
+                  "answer_ref": "66d545a6108d5"
+                }
+              ],
+              "set_to_current_datetime": false
+            },
+            {
+              "max": null,
+              "min": null,
+              "ref": "5b14b8fd31754b14b68b71f6380e9261_66d545605de4b_66d54630bd725",
+              "type": "text",
+              "group": [],
+              "jumps": [],
+              "regex": null,
+              "branch": [],
+              "verify": false,
+              "default": null,
+              "is_title": true,
+              "question": "hola como estas ? devuelta",
+              "uniqueness": "none",
+              "is_required": true,
+              "datetime_format": null,
+              "possible_answers": [],
+              "set_to_current_datetime": false
+            }
+          ]
+        }
+      ],
+      "access": "public",
+      "status": "active",
+      "category": "general",
+      "homepage": "https://five.epicollect.net/project/asd4536456",
+      "logo_url": "",
+      "created_at": "2024-09-02 05:56:00",
+      "visibility": "listed",
+      "description": "",
+      "entries_limits": [],
+      "can_bulk_upload": "nobody",
+      "small_description": "asd324234sdfa4erasf"
+    }
+  }
 }
