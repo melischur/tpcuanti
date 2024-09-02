@@ -5,6 +5,10 @@
 # 3. Calcular el porcentaje de llamados por mes.
 # 4. Generar un gráfico de barras con los datos procesados.
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
+
 # Título principal de la aplicación
 st.title("Análisis de casos Covid")
 
@@ -13,11 +17,6 @@ st.markdown("""
 Esta aplicación permite cargar y analizar datos relacionados con los casos de COVID-19.
 Puedes cargar tu propio archivo CSV y visualizar la distribución de casos por mes.
 """)
-
-
-import pandas as pd
-import matplotlib.pyplot as plt
-import streamlit as st
 
 def leer_datos(archivo):
     # Leer el archivo CSV
