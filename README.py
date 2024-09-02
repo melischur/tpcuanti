@@ -27,23 +27,7 @@ def procesar_datos(datos):
     # Agrupar los datos por mes y sumar los valores de cada tipo de llamado
     llamados_por_mes = datos.groupby('MES')[columnas_numericas].sum()
 
-    # Crear la gráfica
-    llamados_por_mes.plot(kind='bar', figsize=(10, 6))
-
-    # Reemplazar los números de los meses por los nombres de los meses
-    nombres_meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
-                     'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-    plt.xticks(ticks=range(1, 13), labels=nombres_meses, rotation=45)
-
-    # Configurar la gráfica
-    plt.title('Total de Llamados por Tipo y Mes')
-    plt.xlabel('Mes')
-    plt.ylabel('Número de Llamados')
-    plt.legend(title='Tipo de Llamado')
-    plt.tight_layout()
-
-    # Mostrar la gráfica
-    plt.show()
+    return llamados_por_mes
 
 # Cargar archivo usando un botón en Streamlit
 archivo_subido = st.file_uploader("Carga un archivo CSV", type=["csv"])
@@ -51,6 +35,32 @@ archivo_subido = st.file_uploader("Carga un archivo CSV", type=["csv"])
 # Si el archivo es cargado, leer y procesar los datos
 if archivo_subido is not None:
     datos = leer_datos(archivo_subido)
-    procesar_datos(datos)
+    st.write("Datos cargados correctamente. Procesando...")
+
+    # Procesar los datos
+    resultados = procesar_datos(datos)
+
+    # Mostrar los resultados
+    st.write(resultados)
+
+    # Crear la gráfica
+    st.write("Generando gráfica...")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    resultados.plot(kind='bar', ax=ax)
+
+    # Reemplazar los números de los meses por los nombres de los meses
+    nombres_meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                     'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    ax.set_xticks(range(12))
+    ax.set_xticklabels(nombres_meses, rotation=45)
+
+    # Configurar la gráfica
+    ax.set_title('Total de Llamados por Tipo y Mes')
+    ax.set_xlabel('Mes')
+    ax.set_ylabel('Número de Llamados')
+    ax.legend(title='Tipo de Llamado')
+
+    # Mostrar la gráfica en Streamlit
+    st.pyplot(fig)
 else:
     st.write("Por favor, carga un archivo CSV para continuar.")
