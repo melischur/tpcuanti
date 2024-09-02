@@ -5,11 +5,9 @@
 # 3. Calcular el porcentaje de llamados por mes.
 # 4. Generar un gráfico de barras con los datos procesados.
 
-import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import geopandas as gpd
+from tkinter import Tk, Button, filedialog
 
 # Título de la aplicación
 st.title('Análisis y Visualización de Datos')
