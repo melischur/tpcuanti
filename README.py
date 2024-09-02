@@ -5,8 +5,17 @@
 # 3. Calcular el porcentaje de llamados por mes.
 # 4. Generar un gráfico de barras con los datos procesados.
 
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+import geopandas as gpd
+
+# Título de la aplicación
+st.title('Análisis y Visualización de Datos')
+
+# Cargar y mostrar archivo CSV
+uploaded_file_csv = st.file_uploader("Elige un archivo CSV", type="csv", key="csv")
 
 def leer_datos(archivo):
     # Leer el archivo CSV
@@ -31,11 +40,19 @@ def generar_grafico(porcentaje_llamados):
     plt.title('Porcentaje de Llamados por Casos COVID por Mes')
     plt.show()
 
+def cargar_archivo():
+    archivo = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
+    if archivo:
+        datos = leer_datos(archivo)
+        porcentaje_llamados = procesar_datos(datos)
+        generar_grafico(porcentaje_llamados)
+
 def main():
-    archivo = 'datos_covid.csv'
-    datos = leer_datos(archivo)
-    porcentaje_llamados = procesar_datos(datos)
-    generar_grafico(porcentaje_llamados)
+    root = Tk()
+    root.title("Cargar Archivo CSV")
+    boton_cargar = Button(root, text="Cargar Archivo CSV", command=cargar_archivo)
+    boton_cargar.pack(pady=20)
+    root.mainloop()
 
 if __name__ == '__main__':
     main()
