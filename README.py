@@ -45,8 +45,12 @@ def procesar_datos(datos):
     # Mostrar la gráfica
     plt.show()
 
-# Ejemplo de uso
-archivo = 'ruta_al_archivo.csv'  # Reemplaza con la ruta correcta
-datos = leer_datos(archivo)
-procesar_datos(datos)
+# Cargar archivo usando un botón en Streamlit
+archivo_subido = st.file_uploader("Carga un archivo CSV", type=["csv"])
 
+# Si el archivo es cargado, leer y procesar los datos
+if archivo_subido is not None:
+    datos = leer_datos(archivo_subido)
+    procesar_datos(datos)
+else:
+    st.write("Por favor, carga un archivo CSV para continuar.")
